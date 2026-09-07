@@ -262,6 +262,141 @@
       .notice { font-size: .78rem; }
       .refresh-btn { padding: 7px 11px; font-size: .84rem; }
     }
+    /* Surface Studio 2 / PC: ブラウザ表示領域の1画面に全体を収める */
+    @media (min-width: 901px) {
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        min-height: 0;
+      }
+      .page {
+        width: 100%;
+        max-width: none;
+        height: 100vh;
+        height: 100dvh;
+        margin: 0;
+        padding: clamp(6px, .7vh, 10px) clamp(10px, .8vw, 18px);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .topbar {
+        flex: 0 0 auto;
+        margin-bottom: clamp(4px, .55vh, 8px);
+        gap: 10px;
+      }
+      .title h1 {
+        font-size: clamp(1.35rem, 2.2vh, 2rem);
+        line-height: 1.05;
+        margin-bottom: 2px;
+      }
+      .title p {
+        font-size: clamp(.72rem, 1.05vh, .95rem);
+        line-height: 1.15;
+      }
+      #clockTime {
+        font-size: clamp(2.25rem, 5.3vh, 4.2rem);
+        line-height: .9;
+      }
+      #clockDate {
+        margin-top: 2px;
+        font-size: clamp(.72rem, 1.1vh, .95rem);
+      }
+      .layout {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) clamp(210px, 16vw, 300px);
+        gap: clamp(7px, .65vw, 12px);
+        align-items: stretch;
+      }
+      .map-card,
+      .side-card {
+        height: 100%;
+        min-height: 0;
+        border-radius: 16px;
+      }
+      .map-card {
+        display: flex;
+        flex-direction: column;
+      }
+      .map-head {
+        flex: 0 0 auto;
+        padding: clamp(6px, .75vh, 10px) clamp(10px, .8vw, 14px);
+      }
+      .map-head strong,
+      .side-title h2 {
+        font-size: clamp(.9rem, 1.35vh, 1.08rem);
+      }
+      .legend {
+        gap: 5px;
+      }
+      .legend span {
+        font-size: clamp(.66rem, .95vh, .82rem);
+      }
+      .legend i {
+        width: 9px;
+        height: 9px;
+      }
+      .map-wrap {
+        flex: 1 1 auto;
+        min-height: 0;
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+      }
+      .floor-img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+      .side-card {
+        padding: clamp(8px, .8vh, 12px);
+        gap: clamp(5px, .65vh, 9px);
+      }
+      .status-list {
+        gap: clamp(5px, .65vh, 8px);
+      }
+      .status-card {
+        padding: clamp(7px, .8vh, 11px);
+        border-radius: 13px;
+      }
+      .status-line strong {
+        font-size: clamp(.78rem, 1.2vh, .96rem);
+      }
+      .pill {
+        min-width: 60px;
+        padding: 4px 8px;
+        font-size: clamp(.68rem, 1vh, .82rem);
+      }
+      .detail {
+        margin-top: 4px;
+        font-size: clamp(.65rem, .95vh, .8rem);
+        line-height: 1.25;
+      }
+      .notice {
+        font-size: clamp(.64rem, .9vh, .78rem);
+      }
+      .refresh-btn {
+        padding: 6px 10px;
+        font-size: clamp(.7rem, 1vh, .84rem);
+      }
+      .room-label {
+        padding: clamp(4px, .55vh, 8px) clamp(6px, .5vw, 10px);
+      }
+      .room-name {
+        font-size: clamp(.62rem, 1.25vh, 1rem);
+      }
+      .room-status {
+        font-size: clamp(1rem, 2.7vh, 2.1rem);
+      }
+      .room-sub {
+        font-size: clamp(.48rem, .8vh, .68rem);
+      }
+    }
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
       .side-card { order: -1; }
@@ -358,7 +493,7 @@
   </main>
 
   <script>
-    const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxZP2nhSDhOeJebkpQOV2QuuJBl1LuD0U_uD_BRf4TtXZ21eljf98DPe3Tk7goV-yPu/exec	';
+    const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxZP2nhSDhOeJebkpQOV2QuuJBl1LuD0U_uD_BRf4TtXZ21eljf98DPe3Tk7goV-yPu/exec';
     const API_KEY = '8169';
 
     const ROOMS = [
