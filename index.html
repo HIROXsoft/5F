@@ -85,14 +85,18 @@
     .map-wrap {
       position: relative;
       width: 100%;
+      aspect-ratio: 1935 / 1407;
       background: #e5e7eb;
       user-select: none;
+      overflow: hidden;
     }
     .floor-img {
+      position: absolute;
+      inset: 0;
       display: block;
       width: 100%;
-      height: auto;
-      /* PC正面から見た実際の向きに合わせ、平面図だけを180度回転 */
+      height: 100%;
+      object-fit: fill;
       transform-origin: center center;
     }
     .room-zone {
@@ -167,9 +171,9 @@
       overflow-wrap: anywhere;
     }
     /* 平面図180度回転後の会議室位置（文字は正立のまま） */
-    .room1 { left: 7.44%; top: 45.94%; width: 57.27%; height: 42.23%; }
-    .room2 { left: 65.47%; top: 45.95%; width: 32.64%; height: 28.00%; }
-    .room3 { left: 1.48%; top: 21.52%; width: 28.45%; height: 23.60%; }
+    .room1 { left: 7.40%; top: 51.46%; width: 57.82%; height: 46.90%; }
+    .room2 { left: 66.30%; top: 51.75%; width: 32.45%; height: 30.48%; }
+    .room3 { left: 1.92%; top: 23.77%; width: 28.52%; height: 26.70%; }
     .room1 .room-label { width: min(76%, 330px); }
     .room2 .room-label { width: min(88%, 250px); }
     .room3 .room-label {
@@ -225,30 +229,38 @@
     .detail { margin-top: 8px; color: var(--muted); font-size: .88rem; font-weight: 700; line-height: 1.45; }
     .notice { color: var(--muted); font-size: .84rem; line-height: 1.5; margin-top: auto; }
 
-    /* Surface Studio 2（28インチ / 3:2）向け。ブラウザ全画面時に画面を広く使用 */
-    @media (min-width: 1500px) and (min-aspect-ratio: 7/5) and (max-aspect-ratio: 8/5) {
+    /* Surface Studio 2向け・マップ拡大表示。ブラウザの縦横比に依存せず横幅で適用 */
+    @media (min-width: 1200px) {
       .page {
         width: 100%;
         max-width: none;
-        padding: 18px 26px 22px;
+        padding: 8px 12px 10px;
       }
-      .topbar { margin-bottom: 12px; }
-      .title h1 { font-size: clamp(2rem, 2.15vw, 3rem); }
-      .title p { font-size: clamp(1rem, .9vw, 1.3rem); }
-      #clockTime { font-size: clamp(3.6rem, 4.6vw, 5.8rem); }
-      #clockDate { font-size: clamp(1rem, 1vw, 1.35rem); }
+      .topbar {
+        margin-bottom: 6px;
+        gap: 10px;
+      }
+      .title h1 { font-size: clamp(1.75rem, 1.8vw, 2.5rem); }
+      .title p { font-size: clamp(.88rem, .72vw, 1.08rem); }
+      #clockTime { font-size: clamp(3rem, 3.8vw, 4.8rem); }
+      #clockDate { font-size: clamp(.9rem, .82vw, 1.12rem); }
       .layout {
-        grid-template-columns: minmax(0, 1fr) clamp(330px, 23vw, 430px);
-        gap: 18px;
+        grid-template-columns: minmax(0, 1fr) clamp(235px, 15.5vw, 285px);
+        gap: 10px;
       }
-      .map-card, .side-card { border-radius: 26px; }
-      .map-head { padding: 15px 18px; }
-      .map-head strong, .side-title h2 { font-size: 1.22rem; }
-      .side-card { padding: 18px; }
-      .status-card { padding: 15px; }
-      .status-line strong { font-size: 1.08rem; }
-      .detail { font-size: .95rem; }
-      .notice { font-size: .9rem; }
+      .map-card, .side-card { border-radius: 18px; }
+      .map-head { padding: 9px 13px; }
+      .map-head strong, .side-title h2 { font-size: 1.08rem; }
+      .legend { gap: 6px; }
+      .legend span { font-size: .78rem; }
+      .side-card { padding: 11px; gap: 8px; }
+      .status-list { gap: 7px; }
+      .status-card { padding: 10px; border-radius: 14px; }
+      .status-line strong { font-size: .95rem; }
+      .pill { min-width: 68px; padding: 5px 8px; font-size: .82rem; }
+      .detail { margin-top: 6px; font-size: .78rem; line-height: 1.35; }
+      .notice { font-size: .78rem; }
+      .refresh-btn { padding: 7px 11px; font-size: .84rem; }
     }
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
